@@ -1,15 +1,20 @@
 import express from "express";
-import path from "path";
+import { sendHTML } from "./routes/routing";
+import { Routes } from "./types/enums";
 
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  const fileName = "index.html";
-  const options = {
-    root: path.join(process.cwd(), "public"),
-  };
-  res.sendFile(fileName, options);
+app.get("/", (_, res) => {
+  sendHTML(Routes.Index, res);
+});
+
+app.get("/status", (_, res) => {
+  sendHTML(Routes.Status, res);
+});
+
+app.get("*", (_, res) => {
+  sendHTML(Routes.NotFound, res);
 });
 
 app.listen(port, () => {

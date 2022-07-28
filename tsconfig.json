@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
       "outDir": "Content",
-      "allowJs": true,
       "target": "es6",
       "moduleResolution": "Node",
       "esModuleInterop": true,
       "noImplicitAny": true,
+      "module": "commonjs",
       
     },
     "include": ["./src/**/*"]
