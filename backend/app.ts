@@ -1,5 +1,6 @@
 import express from "express";
 import { sendHTML } from "./routes/routing";
+import { getDockerContainerStatus } from "./routes/status/status";
 import { Routes } from "./types/enums";
 
 const app = express();
@@ -9,8 +10,9 @@ app.get("/", (_, res) => {
   sendHTML(Routes.Index, res);
 });
 
-app.get("/status", (_, res) => {
-  sendHTML(Routes.Status, res);
+app.get("/status", async (_, res) => {
+  const dockerRes = await getDockerContainerStatus();
+  return res.send(dockerRes.stdout);
 });
 
 app.get("*", (_, res) => {
