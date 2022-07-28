@@ -2,13 +2,13 @@
   "name": "node-container-status",
   "version": "0.0.0",
   "private": true,
-
   "scripts": {
     "start": "node ./Content/app.js",
     "build": "tsc",
     "watch": "tsc --watch"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "express": "~4.16.1"
   },
   "devDependencies": {

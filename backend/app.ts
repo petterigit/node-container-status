@@ -11,8 +11,8 @@ app.get("/", (_, res) => {
 });
 
 app.get("/status", async (_, res) => {
-  const dockerRes = await getDockerContainerStatus();
-  return res.send(dockerRes.stdout);
+  const status = await getDockerContainerStatus();
+  return res.send(status);
 });
 
 app.get("*", (_, res) => {
